@@ -37,6 +37,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   //  const { isValidating } = useAuthProtection(true, 5 * 60 * 1000);
   const { data: session } = useSession()
 
+  const BACKEND_API_URL = process.env.NEXT_PUBLIC_BACKEND_API_URL!;
+
 
   const { setOpenMobile } = useSidebar();
   const { id } = useParams();
@@ -47,18 +49,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   useEffect(() => {
     const fetchHistories = async () => {
-      fetch("/api/chats")
+      fetch(`${BACKEND_API_URL}/api/chats`, { method: "GET" , headers: { "Content-Type": "application/json" , "Authorization": `Bearer ${session?.user?.accessToken}` } })
         .then((response) => response.json())
         .then((data) => {
           setHistoriesChat(data);
         });
     };
     fetchHistories();
-  }, []);
+  }, [BACKEND_API_URL, session?.user?.accessToken]);
 
   const handleDeleteChat = async () => {
     if (deleteId) {
-      fetch("/api/chats/" + deleteId, { method: "DELETE" })
+      fetch(`${BACKEND_API_URL}/api/chats/` + deleteId, { method: "DELETE", headers: { "Content-Type": "application/json" , "Authorization": `Bearer ${session?.user?.accessToken}` } })
         .then((response) => {
           if (response.ok) {
             setHistoriesChat((prevChats) =>

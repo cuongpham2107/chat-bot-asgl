@@ -4,7 +4,6 @@ import "../globals.css";
 import {
   SidebarInset,
   SidebarProvider,
-  SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/site/layouts/app-sidebar";
 import { Toaster } from "@/components/ui/sonner";
@@ -37,7 +36,6 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SessionProvider>
-
         <SidebarProvider>
           <AppSidebar />
           <SidebarInset>

@@ -2,16 +2,6 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { toast } from "@/components/ui/toast";
-// import {
-//     Users,
-//     Briefcase, 
-//     MessageSquare,
-//     FileText,
-//     Utensils,
-//     GraduationCap
-//   } from "lucide-react";
-
-// Helper function to generate unique IDs
 const generateId = () => Math.random().toString(36).substring(2, 10);
 
 export interface UserInfo {
