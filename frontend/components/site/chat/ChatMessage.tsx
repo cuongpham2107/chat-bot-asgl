@@ -9,6 +9,7 @@ interface ChatMessageProps {
 }
 
 export function ChatMessage({ message, userInfo }: ChatMessageProps) {
+  
   return (
     <div
       key={message.id}

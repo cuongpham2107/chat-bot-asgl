@@ -48,6 +48,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   useEffect(() => {
+    if(session?.user?.accessToken === undefined) return;
     const fetchHistories = async () => {
       fetch(`${BACKEND_API_URL}/api/chats`, { method: "GET" , headers: { "Content-Type": "application/json" , "Authorization": `Bearer ${session?.user?.accessToken}` } })
         .then((response) => response.json())
@@ -110,7 +111,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarGroup>
             <SidebarGroupContent>
               <SidebarMenu>
-                {historiesChat &&
+                {historiesChat.length > 0 &&
                   (() => {
                     const groupedChats = groupChatsByDate(historiesChat);
 

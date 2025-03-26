@@ -78,6 +78,8 @@ export function useChat({ chatId }: UseChatProps) {
   // Helper function to make API requests
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const makeApiRequest = useCallback(async (url: string, method: string, body?: any) => {
+    if (!session?.user?.accessToken) return;
+    
     const response = await fetch(url, {
       method,
       headers: createHeaders(),
@@ -89,7 +91,7 @@ export function useChat({ chatId }: UseChatProps) {
     }
 
     return await response.json();
-  }, [createHeaders]);
+  }, [createHeaders, session?.user?.accessToken]);
 
   // Helper function to send a message to the API
   const sendMessageToApi = useCallback(async (
@@ -145,12 +147,22 @@ export function useChat({ chatId }: UseChatProps) {
   // Fetch message history when chatId changes
   const fetchHistoryMessages = useCallback(async () => {
     try {
-      const data = await makeApiRequest(`/api/chats/${chatId}`, "GET");
-      setMessages(data);
+      const data = await makeApiRequest(`${BACKEND_API_URL}/api/chats/${chatId}`, "GET");
+      // Check if data is a chat object with messages property, or if it's an array of messages directly
+      if (data && Array.isArray(data)) {
+        setMessages(data);
+      } else if (data && data.messages && Array.isArray(data.messages)) {
+        setMessages(data.messages);
+      } else if (data) {
+        // If no messages array found, set an empty array
+        console.warn("Unexpected data format from API:", data);
+        setMessages([]);
+      }
     } catch (error) {
       console.error("Error fetching message history:", error);
+      setMessages([]);
     }
-  }, [chatId, makeApiRequest]);
+  }, [BACKEND_API_URL, chatId, makeApiRequest]);
 
   useEffect(() => {
     if (!chatId) return;

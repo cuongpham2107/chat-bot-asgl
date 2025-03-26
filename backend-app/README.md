@@ -120,3 +120,8 @@ ReDoc documentation is available at http://localhost:8000/redoc
 - `DELETE /api/messages/{message_id}` - Delete a message
 
 
+
+
+python -m app.scripts.seed_api_data
+
+

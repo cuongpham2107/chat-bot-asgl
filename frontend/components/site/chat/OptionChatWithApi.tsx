@@ -90,7 +90,7 @@ export default function OptionChatWithApi({
               }}
               className="w-full grid grid-cols-3 gap-2"
             >
-              {optionDataApi.map((option) => (
+              {optionDataApi?.length > 0 && optionDataApi.map((option) => (
                 <RadioGroup.Item
                   key={option.id}
                   value={option.id}

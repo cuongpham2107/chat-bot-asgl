@@ -33,17 +33,23 @@ export default function ChatComponent({ id }: ChatComponentProps) {
     handleFileUpload,
     handleFileDelete,
   } = useChat({ chatId: id });
-
   return (
-
+    
     <div className="flex flex-col h-[calc(100vh)] w-full">
       {/* Chat messages */}
       <div className="flex-1 overflow-y-auto w-full">
         <div className="flex flex-col p-4 space-y-4 max-w-4xl mx-auto w-full">
-          {messages.length > 0 &&
-            messages.map((message) => (
-              <ChatMessage key={message.id} message={message} userInfo={userInfo} />
-            ))}
+          {messages ? (
+            Array.isArray(messages) && messages.length > 0 ? (
+              messages.map((message) => (
+                <ChatMessage key={message.id} message={message} userInfo={userInfo} />
+              ))
+            ) : (
+              <div className="text-center text-gray-500 py-8">
+                Bắt đầu một cuộc trò chuyện!
+              </div>
+            )
+          ) : null}
 
           {/* Thinking indicator */}
           {isThinking && <ThinkingIndicator />}

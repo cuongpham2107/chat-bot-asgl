@@ -5,17 +5,6 @@ import logging
 from typing import List, Dict, Any, Optional
 import asyncio
 
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.messages import HumanMessage, AIMessage
-from langchain_core.output_parsers import StrOutputParser
-from langchain_community.chat_message_histories import ChatMessageHistory
-from langchain_chroma import Chroma
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain.retrievers import ContextualCompressionRetriever
-from langchain_community.document_transformers import EmbeddingsRedundantFilter
-from langchain.retrievers.document_compressors import DocumentCompressorPipeline
 
 # Import cấu hình
 from .config import ChatAgentConfig as config

@@ -33,7 +33,6 @@ export const {
           const { username, accessToken, user } = credentials || {};
 
           if(!username || !accessToken) {
-            console.log('Missing credentials');
             return null;
           }
           

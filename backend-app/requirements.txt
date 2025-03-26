@@ -25,4 +25,7 @@ python-pptx
 #Word
 docx2txt
 
+#JSON
+jq
+
 google-generativeai
