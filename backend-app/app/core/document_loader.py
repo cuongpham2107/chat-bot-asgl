@@ -180,37 +180,6 @@ def load_docx_to_text(file_path: str) -> List[str]:
         logger.error(f"Error loading Word document: {str(e)}")
         return []
 
-def load_json_to_text(file_path: str, jq_schema: str = ".", text_content: bool = True) -> List[str]:
-    """
-    Load a JSON file and extract its text content.
-
-    Parameters:
-        file_path: The path to the JSON file.
-        jq_schema: JQ schema to query the JSON data (default: '.' - get all JSON).
-        text_content: Determines if content should be converted to text.
-
-    Returns:
-        A list of strings containing the extracted text from the JSON.
-    """
-    try:
-        # Initialize the JSON loader
-        loader = JSONLoader(
-            file_path=file_path,
-            jq_schema=jq_schema,
-            text_content=text_content
-        )
-        
-        # Load and extract text from the JSON
-        documents = loader.load()
-        
-        # Extract text from each document
-        text_content = [doc.page_content for doc in documents]
-        
-        return text_content
-    except Exception as e:
-        logger.error(f"Error loading JSON file: {str(e)}")
-        return []
-
 def load_document_to_text(file_path: str, file_type: Optional[str] = None, **kwargs) -> List[str]:
     """
     Load a document file and extract its text content based on file type.
@@ -253,10 +222,6 @@ def load_document_to_text(file_path: str, file_type: Optional[str] = None, **kwa
         return load_ppt_to_text(file_path)
     elif file_type.lower() == 'docx':
         return load_docx_to_text(file_path)
-    elif file_type.lower() == 'json':
-        jq_schema = kwargs.get('jq_schema', '.')
-        text_content = kwargs.get('text_content', True)
-        return load_json_to_text(file_path, jq_schema, text_content)
     else:
         logger.error(f"Unsupported file type: {file_type}")
         return []

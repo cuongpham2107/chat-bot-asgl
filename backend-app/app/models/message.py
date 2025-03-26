@@ -20,11 +20,9 @@ class MessageResponse(MessageBase):
     class Config:
         from_attributes = True
 
-class ApiChatRequest(BaseModel):
-    """Request model cho chat với API."""
+class SqlChatRequest(BaseModel):
     content: str
-    api_url: str
-
+    value_db_connect: str
 
 class MessageUpdate(BaseModel):
     role: Optional[str] = None

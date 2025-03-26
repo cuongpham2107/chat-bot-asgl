@@ -11,6 +11,9 @@ langchain
 langchain-google-genai
 langchain_community
 langchain-chroma
+langchain-text-splitters
+
+
 
 
 #Excel
@@ -27,5 +30,8 @@ docx2txt
 
 #JSON
 jq
+
+#SQL
+pymysql
 
 google-generativeai

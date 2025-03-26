@@ -28,7 +28,7 @@ from .document_agent import (
     embed_and_store_document,
     chat_with_document
 )
-from .api_agent import generate_response_from_api
+from .sql_agent import generate_response_from_sql
 from .utils import format_chat_history
 
 # Re-export all necessary components to maintain the same API
@@ -41,6 +41,6 @@ __all__ = [
     'generate_response_with_custom_agent',
     'embed_and_store_document',
     'chat_with_document',
-    'generate_response_from_api',
+    'generate_response_from_sql',
     'format_chat_history'
 ]

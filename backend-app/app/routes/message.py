@@ -1,13 +1,12 @@
-from fastapi import APIRouter, Body, File, HTTPException, Depends, BackgroundTasks, UploadFile, logger
-from typing import Optional, Dict, Any, List
+from fastapi import APIRouter, Body, HTTPException, Depends, BackgroundTasks, logger
+from typing import Optional, Dict, Any
 from pydantic import BaseModel
 
-from app.models.chat import DocumentChatRequest, DocumentChatResponse
-from ..models.message import ApiChatRequest, MessageCreate, MessageResponse, MessageUpdate
-from prisma.models import Message, User
+from ..models.message import MessageCreate, MessageResponse, MessageUpdate, SqlChatRequest
+from prisma.models import User
 from ..database import prisma
 from ..utils.auth import get_current_user
-from ..core.agents import chat_with_document, generate_chat_response, format_chat_history, generate_chat_title, generate_response_from_api
+from ..core.agents import chat_with_document, generate_chat_response, format_chat_history, generate_chat_title, generate_response_from_sql
 
 router = APIRouter()
 
@@ -479,40 +478,13 @@ async def regenerate_ai_response(
     return updated_message
 
 
-@router.post("/{chat_id}/api-chat", response_model=MessageResponse)
-async def chat_with_api(
+@router.post("/{chat_id}/sql-chat", response_model=MessageResponse)
+async def chat_with_sql(
     chat_id: str,
-    request: ApiChatRequest = Body(...),
+    request: SqlChatRequest = Body(...),
     current_user: User = Depends(get_current_user)
 ):
-    """
-    Gửi tin nhắn và nhận phản hồi từ AI dựa trên dữ liệu từ API bên ngoài.
-    
-    API này cho phép người dùng gửi tin nhắn và nhận phản hồi từ AI dựa trên dữ liệu
-    được lấy từ một API bên ngoài.
-    
-    Quy trình hoạt động:
-    1. Kiểm tra quyền truy cập chat
-    2. Lưu tin nhắn của người dùng
-    3. Lấy dữ liệu từ API bên ngoài
-    4. Tạo phản hồi AI dựa trên dữ liệu API
-    5. Lưu phản hồi AI
-    
-    Tham số:
-        chat_id: ID của cuộc trò chuyện
-        request: Dữ liệu tin nhắn (content, api_url)
-        current_user: Người dùng hiện tại (được xác thực qua token JWT)
-    
-    Trả về:
-        Đối tượng tin nhắn phản hồi từ AI
-        
-    Raises:
-        404: Nếu không tìm thấy cuộc trò chuyện
-        403: Nếu người dùng không có quyền thêm tin nhắn vào cuộc trò chuyện này
-        500: Nếu có lỗi xảy ra trong quá trình xử lý
-    """
     try:
-        # Kiểm tra chat tồn tại
         chat = await prisma.chat.find_unique(where={"id": chat_id})
         if not chat:
             raise HTTPException(status_code=404, detail="Chat not found")
@@ -535,14 +507,13 @@ async def chat_with_api(
             where={"chatId": chat_id},
             order={"createdAt": "asc"}
         )
-        
-        # Format lịch sử trò chuyện
+
+         # Format lịch sử trò chuyện
         formatted_history = await format_chat_history(chat_history)
-        
-        # Tạo phản hồi AI dựa trên dữ liệu API
-        ai_response = await generate_response_from_api(
+         # Tạo phản hồi AI dựa trên dữ liệu API
+        ai_response = await generate_response_from_sql(
             answer=request.content,
-            url_api=request.api_url,
+            value_db_connect=request.value_db_connect,  # This parameter should be named db_name
             chat_history=formatted_history
         )
         
@@ -564,10 +535,10 @@ async def chat_with_api(
             )
         
         return ai_message
-        
+    
     except Exception as e:
-        logger.error(f"Error in API chat endpoint: {str(e)}")
+        logger.error(f"Error in SQL chat endpoint: {str(e)}")
         raise HTTPException(
             status_code=500,
-            detail=f"Failed to process API chat: {str(e)}"
+            detail=f"Failed to process SQL chat: {str(e)}"
         )

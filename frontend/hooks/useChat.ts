@@ -40,9 +40,9 @@ interface UseChatProps {
 export interface OptionItem {
   id: string;
   name: string;
+  value: string;
   icon: string;
   description: string;
-  url: string;
 }
 
 export function useChat({ chatId }: UseChatProps) {
@@ -98,17 +98,17 @@ export function useChat({ chatId }: UseChatProps) {
     chatId: string, 
     messageContent: string, 
     useApiChat: boolean, 
-    apiUrl?: string, 
+    value?: string, 
     fileId?: string
   ) => {
     let url;
     let body;
 
     if (useApiChat) {
-      url = `${BACKEND_API_URL}/api/messages/${chatId}/api-chat`;
+      url = `${BACKEND_API_URL}/api/messages/${chatId}/sql-chat`;
       body = {
         content: messageContent,
-        api_url: apiUrl
+        value_db_connect: value
       };
     } else {
       url = `${BACKEND_API_URL}/api/messages/chat/${chatId}/send`;
@@ -279,13 +279,13 @@ export function useChat({ chatId }: UseChatProps) {
       
       // Send message to the appropriate API endpoint
       const useApiChat = !!(selectedOptionDataApi && selectedOptionDataApi.id);
-      const apiUrl = selectedOptionDataApi?.url;
+      const value = selectedOptionDataApi?.value;
       
       const data = await sendMessageToApi(
         chatId, 
         messageContent, 
         useApiChat, 
-        apiUrl, 
+        value, 
         fileId
       );
       
@@ -311,14 +311,14 @@ export function useChat({ chatId }: UseChatProps) {
       
       // Determine if we should use the API chat endpoint
       const useApiChat = !!(selectedOptionDataApi && selectedOptionDataApi.id);
-      const apiUrl = selectedOptionDataApi?.url;
+      const value = selectedOptionDataApi?.value;
       
       // Send message to the appropriate API endpoint
       const data = await sendMessageToApi(
         chatId!, 
         messageContent, 
         useApiChat, 
-        apiUrl, 
+        value, 
         fileId
       );
       
