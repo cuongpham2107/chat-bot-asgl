@@ -1,1 +1,9 @@
 .qodo
+
+backend-app/.env
+
+
+backend-app/prisma/migrations
+backend-app/chroma_db/
+backend-app/public/uploads/
+
