@@ -7,7 +7,6 @@ from typing import Any, Dict, List, Optional
 from langchain_community.utilities import SQLDatabase
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import StrOutputParser
 from langchain_community.tools.sql_database.tool import QuerySQLDatabaseTool
 from langchain import hub
 from .config import ChatAgentConfig as config

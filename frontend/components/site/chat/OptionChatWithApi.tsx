@@ -94,9 +94,11 @@ export default function OptionChatWithApi({
                 <RadioGroup.Item
                   key={option.id}
                   value={option.id}
+                  disabled={!option.active}
                   className={cn(
                     "relative flex flex-row space-x-3 items-center group ring-[1px] ring-border rounded-2xl py-1 px-2 pr-3 text-start",
-                    "data-[state=checked]:ring-2 data-[state=checked]:ring-blue-500"
+                    "data-[state=checked]:ring-2 data-[state=checked]:ring-blue-500",
+                    option.active == false ? "opacity-50 cursor-not-allowed" : "",
                   )}
                 >
                   <CircleCheck className="absolute top-1 -right-1 -translate-y-1/2 translate-x-1/2 h-4 w-4 text-primary fill-blue-500 stroke-white group-data-[state=unchecked]:hidden" />

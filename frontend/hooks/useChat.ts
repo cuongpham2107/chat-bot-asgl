@@ -43,6 +43,7 @@ export interface OptionItem {
   value: string;
   icon: string;
   description: string;
+  active: boolean;
 }
 
 export function useChat({ chatId }: UseChatProps) {

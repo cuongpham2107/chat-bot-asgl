@@ -173,53 +173,61 @@ Nếu một câu hỏi không rõ ràng hoặc không thực sự mạch lạc, 
 
     dataApiFetching = [
         {
-            "id": "cm8o9a3b10000t37ajy36j07t",
+            "id": 1,
+            "name": "Vận tải biển",
+            "value": "van-tai-bien",
+            "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNoaXAtaWNvbiBsdWNpZGUtc2hpcCI+PHBhdGggZD0iTTEyIDEwLjE4OVYxNCIvPjxwYXRoIGQ9Ik0xMiAydjMiLz48cGF0aCBkPSJNMTkgMTNWN2EyIDIgMCAwIDAtMi0ySDdhMiAyIDAgMCAwLTIgMnY2Ii8+PHBhdGggZD0iTTE5LjM4IDIwQTExLjYgMTEuNiAwIDAgMCAyMSAxNGwtOC4xODgtMy42MzlhMiAyIDAgMCAwLTEuNjI0IDBMMyAxNGExMS42IDExLjYgMCAwIDAgMi44MSA3Ljc2Ii8+PHBhdGggZD0iTTIgMjFjLjYuNSAxLjIgMSAyLjUgMSAyLjUgMCAyLjUtMiA1LTIgMS4zIDAgMS45LjUgMi41IDFzMS4yIDEgMi41IDFjMi41IDAgMi41LTIgNS0yIDEuMyAwIDEuOS41IDIuNSAxIi8+PC9zdmc+",
+            "description": "Thông tin về vận tải biển",
+            "sql_connect": "mysql+pymysql://asgldb:asgl2019@192.168.1.100:3306/shipping_test",
+            "active": True
+        },
+        {
+            "id": 2,
             "name": "Nhân sự",
             "value": "human",
             "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXVzZXJzIj48cGF0aCBkPSJNMTYgMjF2LTJhNCA0IDAgMCAwLTQtNEg2YTQgNCAwIDAgMC00IDR2MiIvPjxjaXJjbGUgY3g9IjkiIGN5PSI3IiByPSI0Ii8+PHBhdGggZD0iTTIyIDIxdi0yYTQgNCAwIDAgMC0zLTMuODciLz48cGF0aCBkPSJNMTYgMy4xM2E0IDQgMCAwIDEgMCA3Ljc1Ii8+PC9zdmc+",
             "description": "Thông tin về nhân sự",
             "sql_connect": "mysql+pymysql://asgldb:asgl2019@192.168.1.100:3306/shipping_test",
+            "active": False
         },
-        # {
-        #     "id": 2,
-        #     "name": "Tuyển dụng",
-        #     "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJyaWVmY2FzZSI+PHBhdGggZD0iTTE2IDIwVjRhMiAyIDAgMCAwLTItMmgtNGEyIDIgMCAwIDAtMiAydjE2Ii8+PHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjE0IiB4PSIyIiB5PSI2IiByeD0iMiIvPjwvc3ZnPg==",
-        #     "description": "Thông tin về tuyển dụng",
-        #     "url": "/api/chat/tuyendung",
-        # },
-        # {
-        #     "id": 3,
-        #     "name": "Thảo luận",
-        #     "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1lc3NhZ2Utc3F1YXJlLWRvdCI+PHBhdGggZD0iTTExLjcgM0g1YTIgMiAwIDAgMC0yIDJ2MTZsNC00aDEyYTIgMiAwIDAgMCAyLTJ2LTIuNyIvPjxjaXJjbGUgY3g9IjE4IiBjeT0iNiIgcj0iMyIvPjwvc3ZnPg==",
-        #     "description": "Thông tin về thảo luận",
-        #     "url": "/api/chat/thaoluan",
-        # },
-        # {
-        #     "id": 4,
-        #     "name": "Tài liệu",
-        #     "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWZpbGUtdGV4dCI+PHBhdGggZD0iTTE1IDJINmEyIDIgMCAwIDAtMiAydjE2YTIgMiAwIDAgMCAyIDJoMTJhMiAyIDAgMCAwIDItMlY3WiIvPjxwYXRoIGQ9Ik0xNCAydjRhMiAyIDAgMCAwIDIgMmg0Ii8+PHBhdGggZD0iTTEwIDlIOCIvPjxwYXRoIGQ9Ik0xNiAxM0g4Ii8+PHBhdGggZD0iTTE2IDE3SDgiLz48L3N2Zz4=",
-        #     "description": "Tài liệu liên quan đến công việc",
-        #     "url": "/api/chat/taidulieu",
-        # },
-        # {
-        #     "id": 5,
-        #     "name": "Thực đơn",
-        #     "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXV0ZW5zaWxzIj48cGF0aCBkPSJNMyAydjdjMCAxLjEuOSAyIDIgMmg0YTIgMiAwIDAgMCAyLTJWMiIvPjxwYXRoIGQ9Ik03IDJ2MjAiLz48cGF0aCBkPSJNMjEgMTVWMmE1IDUgMCAwIDAtNSA1djZjMCAxLjEuOSAyIDIgMmgzWm0wIDB2NyIvPjwvc3ZnPg==",
-        #     "description": "Thông tin về thực đơn hàng ngày của công ty",
-        #     "url": "/api/chat/thucdon",
-        # },
-        # {
-        #     "id": 6,
-        #     "name": "Đào tạo",
-        #     "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWdyYWR1YXRpb24tY2FwIj48cGF0aCBkPSJNMjEuNDIgMTAuOTIyYTEgMSAwIDAgMC0uMDE5LTEuODM4TDEyLjgzIDUuMThhMiAyIDAgMCAwLTEuNjYgMEwyLjYgOS4wOGExIDEgMCAwIDAgMCAxLjgzMmw4LjU3IDMuOTA4YTIgMiAwIDAgMCAxLjY2IDB6Ii8+PHBhdGggZD0iTTIyIDEwdjYiLz48cGF0aCBkPSJNNiAxMi41VjE2YTYgMyAwIDAgMCAxMiAwdi0zLjUiLz48L3N2Zz4=",
-        #     "description": "Thông tin về đào tạo",
-        #     "url": "/api/chat/daotao",
-        # },
-        # {
-        #     "id": 7,
-        #     "name": "Test API dummy Json",
-        #     "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXBhcnR5LXBvcHBlciI+PHBhdGggZD0iTTUuOCAxMS4zIDIgMjJsMTAuNy0zLjc5Ii8+PHBhdGggZD0iTTQgM2guMDEiLz48cGF0aCBkPSJNMjIgOGguMDEiLz48cGF0aCBkPSJNMTUgMmguMDEiLz48cGF0aCBkPSJNMjIgMjBoLjAxIi8+PHBhdGggZD0ibTIyIDItMi4yNC43NWEyLjkgMi45IDAgMCAwLTEuOTYgMy4xMmMuMS44Ni0uNTcgMS42My0xLjQ1IDEuNjNoLS4zOGMtLjg2IDAtMS42LjYtMS43NiAxLjQ0TDE0IDEwIi8+PHBhdGggZD0ibTIyIDEzLS44Mi0uMzNjLS44Ni0uMzQtMS44Mi4yLTEuOTggMS4xMWMtLjExLjctLjcyIDEuMjItMS40MyAxLjIySDE3Ii8+PHBhdGggZD0ibTExIDIgLjMzLjgyYy4zNC44Ni0uMiAxLjgyLTEuMTEgMS45OEM5LjUyIDQuOSA5IDUuNTIgOSA2LjIzVjciLz48cGF0aCBkPSJNMTEgMTNjMS45MyAxLjkzIDIuODMgNC4xNyAyIDUtLjgzLjgzLTMuMDctLjA3LTUtMi0xLjkzLTEuOTMtMi44My00LjE3LTItNSAuODMtLjgzIDMuMDcuMDcgNSAyWiIvPjwvc3ZnPg==",
-        #     "description": "Truy cập api /product để hỏi về thông tin sản phẩm",
-        #     "url": "https://dummyjson.com/products",
-        # },
+        {
+            "id": 3,
+            "name": "Tuyển dụng",
+            "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJyaWVmY2FzZSI+PHBhdGggZD0iTTE2IDIwVjRhMiAyIDAgMCAwLTItMmgtNGEyIDIgMCAwIDAtMiAydjE2Ii8+PHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjE0IiB4PSIyIiB5PSI2IiByeD0iMiIvPjwvc3ZnPg==",
+            "description": "Thông tin về tuyển dụng",
+            "sql_connect": "/api/chat/tuyendung",
+            "active": False
+        },
+        {
+            "id": 4,
+            "name": "Thảo luận",
+            "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1lc3NhZ2Utc3F1YXJlLWRvdCI+PHBhdGggZD0iTTExLjcgM0g1YTIgMiAwIDAgMC0yIDJ2MTZsNC00aDEyYTIgMiAwIDAgMCAyLTJ2LTIuNyIvPjxjaXJjbGUgY3g9IjE4IiBjeT0iNiIgcj0iMyIvPjwvc3ZnPg==",
+            "description": "Thông tin về thảo luận",
+            "sql_connect": "/api/chat/thaoluan",
+            "active": False
+        },
+        {
+            "id": 5,
+            "name": "Tài liệu",
+            "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWZpbGUtdGV4dCI+PHBhdGggZD0iTTE1IDJINmEyIDIgMCAwIDAtMiAydjE2YTIgMiAwIDAgMCAyIDJoMTJhMiAyIDAgMCAwIDItMlY3WiIvPjxwYXRoIGQ9Ik0xNCAydjRhMiAyIDAgMCAwIDIgMmg0Ii8+PHBhdGggZD0iTTEwIDlIOCIvPjxwYXRoIGQ9Ik0xNiAxM0g4Ii8+PHBhdGggZD0iTTE2IDE3SDgiLz48L3N2Zz4=",
+            "description": "Tài liệu liên quan đến công việc",
+            "sql_connect": "/api/chat/taidulieu",
+            "active": False
+        },
+        {
+            "id": 6,
+            "name": "Thực đơn",
+            "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXV0ZW5zaWxzIj48cGF0aCBkPSJNMyAydjdjMCAxLjEuOSAyIDIgMmg0YTIgMiAwIDAgMCAyLTJWMiIvPjxwYXRoIGQ9Ik03IDJ2MjAiLz48cGF0aCBkPSJNMjEgMTVWMmE1IDUgMCAwIDAtNSA1djZjMCAxLjEuOSAyIDIgMmgzWm0wIDB2NyIvPjwvc3ZnPg==",
+            "description": "Thông tin về thực đơn hàng ngày của công ty",
+            "sql_connect": "/api/chat/thucdon",
+            "active": False
+        },
+        {
+            "id": 7,
+            "name": "Đào tạo",
+            "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWdyYWR1YXRpb24tY2FwIj48cGF0aCBkPSJNMjEuNDIgMTAuOTIyYTEgMSAwIDAgMC0uMDE5LTEuODM4TDEyLjgzIDUuMThhMiAyIDAgMCAwLTEuNjYgMEwyLjYgOS4wOGExIDEgMCAwIDAgMCAxLjgzMmw4LjU3IDMuOTA4YTIgMiAwIDAgMCAxLjY2IDB6Ii8+PHBhdGggZD0iTTIyIDEwdjYiLz48cGF0aCBkPSJNNiAxMi41VjE2YTYgMyAwIDAgMCAxMiAwdi0zLjUiLz48L3N2Zz4=",
+            "description": "Thông tin về đào tạo",
+            "sql_connect": "/api/chat/daotao",
+            "active": False
+        },
     ]
